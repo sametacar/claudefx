@@ -1,6 +1,6 @@
 {
   "name": "claudefx",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Retro game sounds and themed spinner verbs for Claude Code hooks",
   "type": "module",
   "main": "src/index.js",
@@ -21,6 +21,8 @@
     "retro",
     "age-of-empires",
     "starcraft",
+    "orc",
+    "human",
     "warcraft",
     "mortal-kombat",
     "anthropic"

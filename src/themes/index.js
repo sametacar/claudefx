@@ -4,13 +4,15 @@ import { ao2Franks } from './ao2-franks.js';
 import { ao2Turks } from './ao2-turks.js';
 import { scTerran } from './sc-terran.js';
 import { scProtoss } from './sc-protoss.js';
-import { wc } from './wc.js';
+import { wcOrc } from './wc-orc.js';
+import { wcHuman } from './wc-human.js';
 import { mk } from './mk.js';
 
 const themes = {
   'sc-terran': scTerran,
   'sc-protoss': scProtoss,
-  wc,
+  'wc-orc': wcOrc,
+  'wc-human': wcHuman,
   mk,
   'ao2-britons': ao2Britons,
   'ao2-franks': ao2Franks,

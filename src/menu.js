@@ -2,15 +2,16 @@ import { get } from './themes/index.js';
 import * as claudeCode from './adapters/claude-code.js';
 
 const MENU_ITEMS = [
-  { id: 'none', name: 'Sounds Off' },
+  { id: 'none',        name: '🔇 Sounds Off' },
   null,
-  { id: 'sc-terran',   name: 'StarCraft: Terran' },
-  { id: 'sc-protoss',  name: 'StarCraft: Protoss' },
-  { id: 'wc',          name: 'Warcraft' },
-  { id: 'mk',          name: 'Mortal Kombat' },
-  { id: 'ao2-britons', name: 'Age of Empires 2: Britons' },
-  { id: 'ao2-franks',  name: 'Age of Empires 2: Franks' },
-  { id: 'ao2-turks',   name: 'Age of Empires 2: Turks' }
+  { id: 'sc-terran',   name: '🚀 StarCraft: Terran' },
+  { id: 'sc-protoss',  name: '⚡ StarCraft: Protoss' },
+  { id: 'wc-orc',      name: '👹 Warcraft: Orc' },
+  { id: 'wc-human',    name: '🛡️ Warcraft: Human' },
+  { id: 'mk',          name: '🕺 Mortal Kombat' },
+  { id: 'ao2-britons', name: '🏹 Age of Empires 2: Britons' },
+  { id: 'ao2-franks',  name: '⚜️ Age of Empires 2: Franks' },
+  { id: 'ao2-turks',   name: '💣 Age of Empires 2: Turks' }
 ];
 
 // Navigable items (non-null)

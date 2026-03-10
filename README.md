@@ -22,12 +22,13 @@ That's it. Pick a theme from the menu — hooks are set up automatically using `
 | Theme | Game |
 |-------|------|
 | `sc-terran` | 🚀 StarCraft: Terran |
-| `sc-protoss` | 🚀 StarCraft: Protoss |
-| `wc` | 🪓 Warcraft |
+| `sc-protoss` | ⚡ StarCraft: Protoss |
+| `wc-orc` | 👹 Warcraft: Orc |
+| `wc-human` | 🛡️ Warcraft: Human |
 | `mk` | 🕺 Mortal Kombat |
-| `ao2-britons` | 🏰 Age of Empires 2: Britons |
-| `ao2-franks` | 🏰 Age of Empires 2: Franks |
-| `ao2-turks` | 🏰 Age of Empires 2: Turks |
+| `ao2-britons` | 🏹 Age of Empires 2: Britons |
+| `ao2-franks` | ⚜️ Age of Empires 2: Franks |
+| `ao2-turks` | 💣 Age of Empires 2: Turks |
 
 
 ## Themed Spinner Verbs
