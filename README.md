@@ -45,7 +45,7 @@ Each theme also replaces Claude Code's spinner verbs with game-themed phrases. W
 npx claudefx
 ```
 
-Use `↑↓` to navigate, `Enter` to select, `q` to quit.
+Use `↑↓` to navigate, `←→` to adjust volume, `Enter` to select, `q` to quit.
 
 <img src="assets/image-claudefx-menu.webp" width="439" alt="Interactive menu">
 
@@ -57,6 +57,7 @@ npx claudefx use <theme>       # apply a theme
 npx claudefx use ao2-turks     # example
 npx claudefx off               # disable sounds
 npx claudefx current           # show active theme
+npx claudefx volume <0-100>    # set volume (e.g. claudefx volume 60)
 ```
 
 ## How It Works

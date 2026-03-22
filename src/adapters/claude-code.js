@@ -85,7 +85,7 @@ function isSoundHook(h) {
   return h?.hooks?.some(hh => hh.command?.includes('claudefx hook'));
 }
 
-export function apply(theme) {
+export function apply(theme, volume) {
   const settings = readSettings();
   const hooks = settings.hooks ?? {};
 
@@ -97,9 +97,21 @@ export function apply(theme) {
 
   settings.hooks = hooks;
   settings.spinnerVerbs = { mode: 'replace', verbs: theme.verbs };
-  settings['claudefx'] = { theme: theme.id };
+  const current = settings['claudefx'] ?? {};
+  settings['claudefx'] = { ...current, theme: theme.id, volume: volume ?? current.volume ?? 60 };
   writeSettings(settings);
   applyVscode(theme.verbs);
+}
+
+export function getVolume() {
+  const settings = readSettings();
+  return settings['claudefx']?.volume ?? 60;
+}
+
+export function setVolume(volume) {
+  const settings = readSettings();
+  settings['claudefx'] = { ...(settings['claudefx'] ?? {}), volume };
+  writeSettings(settings);
 }
 
 export function off() {

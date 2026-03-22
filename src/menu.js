@@ -2,7 +2,7 @@ import { get } from './themes/index.js';
 import * as claudeCode from './adapters/claude-code.js';
 
 const MENU_ITEMS = [
-  { id: 'none',        name: '🔇 Sounds Off' },
+  { id: 'none',        name: '🚫 Disable' },
   null,
   { id: 'sc-terran',   name: '🚀 StarCraft: Terran' },
   { id: 'sc-protoss',  name: '⚡ StarCraft: Protoss' },
@@ -21,6 +21,11 @@ function write(s) {
   process.stdout.write(s);
 }
 
+function volumeBar(vol) {
+  const filled = Math.round(vol / 10);
+  return '█'.repeat(filled) + '░'.repeat(10 - filled);
+}
+
 export function showMenu() {
   if (!process.stdin.isTTY) {
     console.error('No TTY available. Use: claudefx use <theme>');
@@ -29,6 +34,7 @@ export function showMenu() {
 
   const activeId = claudeCode.current() ?? 'none';
   let selected = Math.max(0, NAV_ITEMS.findIndex(item => item.id === activeId));
+  let volume = claudeCode.getVolume();
 
   write('\x1b[?1049h'); // enter alt screen
   write('\x1b[?25l');   // hide cursor
@@ -46,7 +52,8 @@ export function showMenu() {
     write('\x1b[1;36mclaudefx\x1b[0m\n');
     write('\x1b[2m────────────────────────────────────────\x1b[0m\n');
     write('\n');
-    write('  \x1b[2m↑↓\x1b[0m navigate   \x1b[2mEnter\x1b[0m select   \x1b[2mq\x1b[0m quit\n');
+    write('  \x1b[2m↑↓\x1b[0m navigate   \x1b[2m←→\x1b[0m volume   \x1b[2mEnter\x1b[0m select   \x1b[2mq\x1b[0m quit\n');
+    write(`  \x1b[2m🔊\x1b[0m \x1b[33m${volumeBar(volume)}\x1b[0m \x1b[2m${volume}%\x1b[0m\n`);
     write('\n');
 
     let navIndex = 0;
@@ -92,6 +99,14 @@ export function showMenu() {
     } else if (key === '\x1b[B') {
       selected = (selected + 1) % NAV_ITEMS.length;
       draw();
+    } else if (key === '\x1b[D') { // left arrow
+      volume = Math.max(0, volume - 10);
+      claudeCode.setVolume(volume);
+      draw();
+    } else if (key === '\x1b[C') { // right arrow
+      volume = Math.min(100, volume + 10);
+      claudeCode.setVolume(volume);
+      draw();
     } else if (key === '\r') {
       const item = NAV_ITEMS[selected];
       cleanup();
@@ -101,10 +116,10 @@ export function showMenu() {
         write('\x1b[1;33m✓ Sounds disabled\x1b[0m\n');
       } else {
         const theme = get(item.id);
-        claudeCode.ensureGlobalInstall();
-        claudeCode.apply(theme);
+        try { claudeCode.ensureGlobalInstall(); } catch { /* npx handles it */ }
+        claudeCode.apply(theme, volume);
         const fullNote = theme.full ? ' (full)' : '';
-        write(`\x1b[1;32m✓ Applied "${theme.name}"${fullNote}\x1b[0m\n`);
+        write(`\x1b[1;32m✓ Applied "${theme.name}"${fullNote} at ${volume}%\x1b[0m\n`);
       }
 
       process.exit(0);

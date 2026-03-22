@@ -16,6 +16,7 @@ Usage:
   claudefx use <theme>   Apply a theme
   claudefx off           Disable sounds
   claudefx current       Show active theme
+  claudefx volume <n>    Set volume (0–100)
   claudefx hook <event>  Play sound for event (called by hooks)
 `);
 }
@@ -40,7 +41,7 @@ switch (command) {
     }
     try {
       const theme = get(id);
-      claudeCode.ensureGlobalInstall();
+      try { claudeCode.ensureGlobalInstall(); } catch { /* npx handles it */ }
       claudeCode.apply(theme);
       const fullNote = theme.full ? ' (full)' : '';
       console.log(`\x1b[1;32m✓ Applied "${theme.name}"${fullNote}\x1b[0m`);
@@ -73,6 +74,17 @@ switch (command) {
     break;
   }
 
+  case 'volume': {
+    const vol = parseInt(args[0], 10);
+    if (isNaN(vol) || vol < 0 || vol > 100) {
+      console.error('Usage: claudefx volume <0–100>');
+      process.exit(1);
+    }
+    claudeCode.setVolume(vol);
+    console.log(`\x1b[1;32m✓ Volume set to ${vol}%\x1b[0m`);
+    break;
+  }
+
   case 'hook': {
     const event = args[0];
     if (!event) process.exit(0);
@@ -80,7 +92,8 @@ switch (command) {
     if (!id) process.exit(0);
     try {
       const theme = get(id);
-      playEvent(theme, event);
+      const volume = claudeCode.getVolume();
+      playEvent(theme, event, volume);
     } catch {
       // silently ignore — hooks must not break Claude Code
     }
