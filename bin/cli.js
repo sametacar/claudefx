@@ -3,6 +3,7 @@ import { list, get } from '../src/themes/index.js';
 import * as claudeCode from '../src/adapters/claude-code.js';
 import { playEvent } from '../src/player.js';
 import { showMenu } from '../src/menu.js';
+import { spawnSync } from 'child_process';
 
 const [,, command, ...args] = process.argv;
 
@@ -61,13 +62,13 @@ switch (command) {
 
   case 'uninstall': {
     claudeCode.off();
-    const { spawnSync } = await import('child_process');
-    const result = spawnSync('npm', ['uninstall', '-g', 'claudefx'], { stdio: 'inherit' });
+    const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+    const result = spawnSync(npm, ['uninstall', '-g', 'claudefx'], { stdio: 'inherit' });
     if (result.status === 0) {
       console.log('\x1b[1;32m✓ claudefx uninstalled\x1b[0m');
     } else {
-      console.error('npm uninstall failed. Run manually: npm uninstall -g claudefx');
-      process.exit(1);
+      console.log('\x1b[1;32m✓ Settings cleaned\x1b[0m');
+      console.log('\x1b[2mIf globally installed, run: npm uninstall -g claudefx\x1b[0m');
     }
     break;
   }
