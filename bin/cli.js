@@ -17,6 +17,7 @@ Usage:
   claudefx off           Disable sounds
   claudefx current       Show active theme
   claudefx volume <n>    Set volume (0–100)
+  claudefx uninstall     Remove hooks, verbs, and uninstall package
   claudefx hook <event>  Play sound for event (called by hooks)
 `);
 }
@@ -55,6 +56,19 @@ switch (command) {
   case 'off': {
     claudeCode.off();
     console.log('\x1b[1;33m✓ Sounds disabled\x1b[0m');
+    break;
+  }
+
+  case 'uninstall': {
+    claudeCode.off();
+    const { spawnSync } = await import('child_process');
+    const result = spawnSync('npm', ['uninstall', '-g', 'claudefx'], { stdio: 'inherit' });
+    if (result.status === 0) {
+      console.log('\x1b[1;32m✓ claudefx uninstalled\x1b[0m');
+    } else {
+      console.error('npm uninstall failed. Run manually: npm uninstall -g claudefx');
+      process.exit(1);
+    }
     break;
   }
 

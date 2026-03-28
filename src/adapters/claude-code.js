@@ -98,14 +98,14 @@ export function apply(theme, volume) {
   settings.hooks = hooks;
   settings.spinnerVerbs = { mode: 'replace', verbs: theme.verbs };
   const current = settings['claudefx'] ?? {};
-  settings['claudefx'] = { ...current, theme: theme.id, volume: volume ?? current.volume ?? 60 };
+  settings['claudefx'] = { ...current, theme: theme.id, volume: volume ?? current.volume ?? 50 };
   writeSettings(settings);
   applyVscode(theme.verbs);
 }
 
 export function getVolume() {
   const settings = readSettings();
-  return settings['claudefx']?.volume ?? 60;
+  return settings['claudefx']?.volume ?? 50;
 }
 
 export function setVolume(volume) {

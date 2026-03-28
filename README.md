@@ -57,6 +57,7 @@ npx claudefx use <theme>       # apply a theme
 npx claudefx use ao2-turks     # example
 npx claudefx off               # disable sounds
 npx claudefx current           # show active theme
+npx claudefx uninstall         # remove hooks, verbs, and uninstall package
 npx claudefx volume <0-100>    # set volume (e.g. claudefx volume 60)
 ```
 
@@ -79,6 +80,14 @@ npx claudefx volume <0-100>    # set volume (e.g. claudefx volume 60)
 - **macOS**: built-in `afplay` (no extra deps)
 - **Windows**: built-in PowerShell (no extra deps)
 - **Linux**: `mpg123` (`sudo apt install mpg123`)
+
+## Uninstall
+
+```bash
+npx claudefx uninstall
+```
+
+Removes all hooks and spinner verbs from `~/.claude/settings.json`, uninstalls the package, and deletes all sound files.
 
 ## License
 
