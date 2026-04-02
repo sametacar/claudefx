@@ -100,6 +100,42 @@ switch (command) {
     break;
   }
 
+  case 'statusline': {
+    const label = args[0] ?? '💰';
+    const ctxLabel = args[1] ?? '⛏️';
+    const ctxBar = args[2] === 'bar';
+    const chunks = [];
+    process.stdin.on('data', d => chunks.push(d));
+    process.stdin.on('end', () => {
+      try {
+        const data = JSON.parse(chunks.join(''));
+        const tokens = data?.context_window?.total_input_tokens ?? 0;
+        const gold = Math.floor(tokens / 10);
+        const formatted = gold.toLocaleString('en-US');
+        const quota = data?.rate_limits?.five_hour?.used_percentage;
+
+        let ctx = '';
+        if (quota !== undefined) {
+          if (ctxBar) {
+            const remaining = Math.floor(100 - quota);
+            const filled = Math.round(remaining / 10);
+            const bar = '\x1b[38;5;214m' + '█'.repeat(filled) + '\x1b[2m' + '░'.repeat(10 - filled) + '\x1b[0m';
+            ctx = `❤️  ${bar}`;
+          } else {
+            const used = Math.floor(quota);
+            ctx = `${ctxLabel} ${used}%`;
+          }
+        }
+
+        const suffix = ctx ? `   ${ctx}` : '';
+        process.stdout.write(`${label} ${formatted}${suffix}\n`);
+      } catch {
+        // silently fail — statusline must not break Claude Code
+      }
+    });
+    break;
+  }
+
   case 'hook': {
     const event = args[0];
     if (!event) process.exit(0);
