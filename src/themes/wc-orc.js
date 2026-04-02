@@ -2,6 +2,7 @@ const base = {
   id: 'wc-orc',
   name: 'Warcraft Orc',
   soundDir: 'wc/orc',
+  statusLine: { label: '💰', ctxLabel: '⛏️' },
   events: {
     stop: [
       'Orc_PeonBuildingComplete1.mp3',

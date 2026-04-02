@@ -1,6 +1,6 @@
 {
   "name": "claudefx",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Retro game sounds and themed spinner verbs for Claude Code hooks",
   "type": "module",
   "main": "src/index.js",

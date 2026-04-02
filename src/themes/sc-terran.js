@@ -2,6 +2,7 @@ export const scTerran = {
   id: 'sc-terran',
   name: 'StarCraft: Terran',
   soundDir: 'sc/terran',
+  statusLine: { label: '💎', ctxLabel: '☢️' },
   events: {
     stop: [
       'SC_Battlecruiser_All_Crews_Reporting.mp3',

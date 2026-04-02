@@ -2,6 +2,7 @@ const base = {
   id: 'ao2-franks',
   name: 'Age of Empires 2: Franks',
   soundDir: 'ageof2/franks',
+  statusLine: { label: '💰', ctxLabel: '🏰' },
   events: {
     stop: ['Franks_Oil.mp3', 'Franks_Oe.mp3', 'Franks_Certes.mp3', "Franks_Bucheron.mp3", "Franks_Chasseur.mp3", "Franks_Oil.mp3", "Franks_Oe.mp3", "Franks_Verax.mp3", "Franks_Maraud.mp3", "Franks_Quevalie.mp3", "Franks_Bastiosr.mp3", "Franks_Pret.mp3"],
     sessionstart: ['Franks_Pret.mp3'],

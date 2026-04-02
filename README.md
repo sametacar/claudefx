@@ -31,6 +31,17 @@ That's it. Pick a theme from the menu — hooks are set up automatically using `
 | `ao2-turks` | 💣 Age of Empires 2: Turks |
 
 
+## Usage Stats in the Status Bar
+
+Each theme displays a live status line at the bottom of your terminal showing two game-themed metrics:
+
+- **Token count** — total input tokens spent in the session, displayed at 1/10th scale (e.g. 3,500 tokens → 350) with a theme-appropriate icon (💰 for Warcraft and Age of Empires, 💎 for StarCraft)
+- **Rate limit** — your 5-hour usage quota percentage, shown as a thematic indicator: construction progress for Warcraft, nuclear readiness for StarCraft: Terran, Mothership energy for StarCraft: Protoss, castle fortification for Age of Empires, or a health bar for Mortal Kombat
+
+<img src="assets/image-claudefx-usage-rates.webp" width="439" alt="Usage stats in the status line">
+
+The status line updates automatically after each Claude response. Rate limit stats are available for Claude Pro and Max subscribers only — the token count is shown for everyone.
+
 ## Themed Spinner Verbs
 
 Each theme also replaces Claude Code's spinner verbs with game-themed phrases. While Claude is thinking, you'll see lines like *"Spawning zerglings"* or *"Summoning ogres"* instead of the defaults.

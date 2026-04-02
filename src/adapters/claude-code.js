@@ -99,6 +99,16 @@ export function apply(theme, volume) {
   settings.spinnerVerbs = { mode: 'replace', verbs: theme.verbs };
   const current = settings['claudefx'] ?? {};
   settings['claudefx'] = { ...current, theme: theme.id, volume: volume ?? current.volume ?? 50 };
+
+  if (theme.statusLine) {
+    settings.statusLine = {
+      type: 'command',
+      command: `npx -y claudefx statusline ${theme.statusLine.label} ${theme.statusLine.ctxLabel ?? '⛏️'} ${theme.statusLine.ctxBar ? 'bar' : ''}`,
+    };
+  } else {
+    delete settings.statusLine;
+  }
+
   writeSettings(settings);
   applyVscode(theme.verbs);
 }
@@ -135,6 +145,7 @@ export function off() {
 
   delete settings.spinnerVerbs;
   delete settings['claudefx'];
+  delete settings.statusLine;
   writeSettings(settings);
   resetVscode();
 }

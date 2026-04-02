@@ -2,6 +2,7 @@ const base = {
   id: 'ao2-britons',
   name: 'Age of Empires 2: Britons',
   soundDir: 'ageof2/britons',
+  statusLine: { label: '💰', ctxLabel: '🏰' },
   events: {
     stop: ['Britons_Yes.mp3', 'Britons_Yea.mp3', 'Britons_Correctus.mp3', "Britons_Chopper.mp3", "Britons_Ready.mp3", "Britons_Hunter.mp3", "Britons_Presto.mp3"],
     sessionstart: ['Britons_Greetin.mp3', 'Britons_Ready.mp3'],

@@ -2,6 +2,7 @@ const base = {
   id: 'mk',
   name: 'Mortal Kombat',
   soundDir: 'mk',
+  statusLine: { label: '🩸', ctxBar: true },
   events: {
     stop: [
       'MK_Impressive.mp3', 

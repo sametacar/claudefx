@@ -2,6 +2,7 @@ const base = {
   id: 'ao2-turks',
   name: 'Age of Empires 2: Turks',
   soundDir: 'ageof2/turks',
+  statusLine: { label: '💰', ctxLabel: '🏰' },
   events: {
     stop: ['Turks_Yaparim.mp3', 'Turks_Evet.mp3'],
     sessionstart: ['Turks_Hazir.mp3'],

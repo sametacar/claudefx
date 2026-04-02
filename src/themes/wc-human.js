@@ -2,6 +2,7 @@ const base = {
   id: 'wc-human',
   name: 'Warcraft Human',
   soundDir: 'wc/human',
+  statusLine: { label: '💰', ctxLabel: '⛏️' },
   events: {
     stop: [
       'Human_Hwrkdone_Work_Completed.mp3',

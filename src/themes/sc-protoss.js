@@ -2,6 +2,7 @@ export const scProtoss = {
   id: 'sc-protoss',
   name: 'StarCraft: Protoss',
   soundDir: 'sc/protoss',
+  statusLine: { label: '💎', ctxLabel: '🛸' },
   events: {
     stop: [
       'SC_Archon_The_Merging_Is_Complete.mp3',
