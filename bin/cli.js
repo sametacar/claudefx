@@ -3,9 +3,16 @@ import { list, get } from '../src/themes/index.js';
 import * as claudeCode from '../src/adapters/claude-code.js';
 import { playEvent } from '../src/player.js';
 import { showMenu } from '../src/menu.js';
+import { checkDependencies } from '../src/check-deps.js';
 import { spawnSync } from 'child_process';
 
 const [,, command, ...args] = process.argv;
+
+// Run dependency checks only for interactive mode.
+// Skip for all explicit commands, including hooks and statusline.
+if (command === undefined) {
+  checkDependencies();
+}
 
 function help() {
   console.log(`
