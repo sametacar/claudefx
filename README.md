@@ -100,6 +100,16 @@ npx claudefx uninstall
 
 Removes all hooks and spinner verbs from `~/.claude/settings.json`, uninstalls the package, and deletes all sound files.
 
+## Contributors
+
+- [Mert Sişmanoğlu](https://github.com/mertssmnoglu) — dependency checks for audio tools
+
+Contributions are welcome! Feel free to open a pull request.
+
+## See Also
+
+- [claude-verbs](https://github.com/sametacar/claude-verbs) — replace Claude Code's thinking verbs with Star Wars, Game of Thrones, Lord of the Rings, Project Hail Mary, and more. Highly recommended, give it a try!
+
 ## License
 
 MIT © [Samet Acar](https://github.com/sametacar)
